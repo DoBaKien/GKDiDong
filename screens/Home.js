@@ -1,4 +1,11 @@
-import { Text, View, StyleSheet, FlatList, TextInput } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  TextInput,
+  Image,
+} from "react-native";
 import data from "../data";
 import List from "./List";
 import Icon from "react-native-vector-icons/Feather";
@@ -12,6 +19,21 @@ function Home({ navigation }) {
         },
       ]}
     >
+      <View
+        flexDirection="row"
+        style={{
+          marginTop: 10,
+          marginBottom: 10,
+          display: "flex",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <Icon name="menu" size={30} color="#900" />
+        <Text style={{ textAlign: "center", fontSize: 20, fontWeight: "bold" }}>
+          Home
+        </Text>
+        <Image style={styles.dn} source={require("../Image/dn.png")} />
+      </View>
       <View>
         <Text style={styles.title}>Find Best Burger in Your City</Text>
         <View flexDirection="row">
@@ -49,6 +71,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    marginTop: 30,
   },
   title: {
     fontSize: 20,

@@ -1,8 +1,13 @@
+import { useState } from "react";
 import { Image, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 
-function Details({ a }) {
-    console.log(a);
+function Details({ navigation, route }) {
+  const [count, setCount] = useState(0);
+  const onPress = () => setCount((prevCount) => prevCount + 1);
+  const onPress1 = () => setCount((prevCount) => prevCount - 1);
+  const detai = route.params.a;
+
   return (
     <View>
       <View
@@ -21,7 +26,7 @@ function Details({ a }) {
           </Text>
 
           <Text style={{ fontSize: 20, fontWeight: "bold", marginTop: 20 }}>
-            Angus bugger topped with lettuce, tomato and ShackSource
+            {detai.name} topped with lettuce, tomato and ShackSource
           </Text>
           <View flexDirection="row">
             <Text style={{ fontSize: 25, fontWeight: "bold", marginRight: 30 }}>
@@ -32,6 +37,7 @@ function Details({ a }) {
               size={30}
               color="#900"
               style={styles.iconSearch}
+              onPress={onPress}
             />
             <View style={{ width: 100, height: 100 }}>
               <Text
@@ -42,7 +48,7 @@ function Details({ a }) {
                   textAlign: "center",
                 }}
               >
-                0
+                {count}
               </Text>
             </View>
             <Icon
@@ -50,6 +56,7 @@ function Details({ a }) {
               size={30}
               color="#900"
               style={styles.iconSearch}
+              onPress={onPress1}
             />
           </View>
         </View>
@@ -77,7 +84,9 @@ function Details({ a }) {
                   marginRight: 10,
                 }}
               ></View>
-              <Text style={{ fontSize: 25, fontWeight: "bold" }}>100$</Text>
+              <Text style={{ fontSize: 25, fontWeight: "bold" }}>
+                {detai.price * count} $
+              </Text>
             </View>
           </TouchableOpacity>
         </View>

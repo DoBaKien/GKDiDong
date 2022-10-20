@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Text,
   View,
@@ -5,12 +6,15 @@ import {
   Image,
   TouchableWithoutFeedback,
 } from "react-native";
-
+import Icon from "react-native-vector-icons/AntDesign";
 function List({ a, navigation }) {
+  const [tim, setTim] = useState("heart");
+  const changle = () => setTim(tim === "heart" ? "hearto" : "heart");
+  
   return (
     <TouchableWithoutFeedback
       onPress={() => {
-        navigation.navigate("Details", { a: a.id, id:1 });
+        navigation.navigate("Details", { a: a });
       }}
     >
       <View style={styles.container}>
@@ -18,12 +22,15 @@ function List({ a, navigation }) {
         <View flexDirection="row">
           <View>
             <Text style={{ marginRight: 10 }}>{a.name}</Text>
-            <Text>{a.price}</Text>
+            <Text>$ {a.price}</Text>
           </View>
           <View style={{ marginTop: 10, marginLeft: 20 }}>
-            <Image
-              style={{ width: 20, height: 20, resizeMode: "contain" }}
-              source={require("../Image/va.png")}
+            <Icon
+              name={tim}
+              size={30}
+              color="#900"
+              style={styles.iconSearch}
+              onPress={changle}
             />
           </View>
         </View>
