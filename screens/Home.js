@@ -1,15 +1,8 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  FlatList,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, StyleSheet, FlatList, TextInput } from "react-native";
 import data from "../data";
 import List from "./List";
 import Icon from "react-native-vector-icons/Feather";
-function Home() {
+function Home({ navigation }) {
   return (
     <View
       style={[
@@ -37,7 +30,7 @@ function Home() {
           numColumns={2}
           keyExtractor={(data) => data.key}
           data={data}
-          renderItem={(data) => <List a={data.item} />}
+          renderItem={(data) => <List a={data.item} navigation={navigation} />}
         />
       </View>
     </View>

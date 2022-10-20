@@ -6,9 +6,13 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
-function List({ a }) {
+function List({ a, navigation }) {
   return (
-    <TouchableWithoutFeedback onPress={() => console.log(a.key)}>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        navigation.navigate("Details", { a: a.id, id:1 });
+      }}
+    >
       <View style={styles.container}>
         <Image style={styles.tinyLogo} source={require("../Image/b.png")} />
         <View flexDirection="row">
